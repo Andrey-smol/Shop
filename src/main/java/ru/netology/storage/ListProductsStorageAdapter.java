@@ -1,17 +1,14 @@
 package ru.netology.storage;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.OptionalInt;
-import java.util.Set;
+import java.util.*;
 
 public class ListProductsStorageAdapter implements IProductsStorage<Product>{
-    private Map<Product, Integer> products = new HashMap<>();
+    private final Map<Product, Integer> products = new HashMap<>();
 
     @Override
     public Integer append(Product product, int value) {
         int val = value;
-        if (products.containsValue(product)) {
+        if (products.containsKey(product)) {
             val += products.get(product);
         }
         return products.put(product, value + val);

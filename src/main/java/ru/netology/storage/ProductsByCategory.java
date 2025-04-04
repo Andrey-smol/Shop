@@ -6,6 +6,7 @@ import java.util.Set;
 public class ProductsByCategory {
     private final String category;
     private final IProductsStorage<Product> productsStorage;
+    private int count = 0;
 
     public ProductsByCategory(String category, IProductsStorage<Product> productsStorage) {
         this.category = category;
@@ -31,4 +32,5 @@ public class ProductsByCategory {
     public String getCategory() {
         return category;
     }
+
 }
