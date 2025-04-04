@@ -4,8 +4,7 @@ import ru.netology.orders.IObserver;
 import ru.netology.orders.ISubject;
 import ru.netology.orders.Order;
 
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.function.Consumer;
 
 public class StorageOrders implements IObserver {
@@ -19,6 +18,7 @@ public class StorageOrders implements IObserver {
 
     @Override
     public void update(Order data) {
+
         consumer.accept(data);
     }
 }

@@ -16,26 +16,32 @@ public class Product {
     }
 
     public String getName() {
+
         return name;
     }
 
     public int getPrice() {
+
         return price;
     }
 
     public int getRating() {
+
         return rating;
     }
 
     public void setPrice(int price) {
+
         this.price = price;
     }
 
     public void setRating(int rating) {
+
         this.rating = rating;
     }
 
     public String getManufacturer() {
+
         return manufacturer;
     }
 
@@ -49,6 +55,7 @@ public class Product {
 
     @Override
     public int hashCode() {
+
         return Objects.hash(name);
     }
 }

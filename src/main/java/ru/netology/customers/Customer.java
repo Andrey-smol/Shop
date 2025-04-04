@@ -3,10 +3,10 @@ package ru.netology.customers;
 import ru.netology.address.Address;
 
 public class Customer {
-    private String name;
-    private String surname;
+    private final String name;
+    private final String surname;
 
-    private Address address;
+    private final Address address;
 
     public Customer(String name, String surname, Address address) {
         this.name = name;
@@ -15,14 +15,17 @@ public class Customer {
     }
 
     public String getName() {
+
         return name;
     }
 
     public String getSurname() {
+
         return surname;
     }
 
     public Address getAddress() {
+
         return address;
     }
 

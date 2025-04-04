@@ -2,20 +2,18 @@ package ru.netology.storage;
 
 import java.util.*;
 
-public class ListProductsStorageAdapter implements IProductsStorage<Product>{
+public class ListProductsStorageAdapter implements IProductsStorage<Product> {
     private final Map<Product, Integer> products = new HashMap<>();
 
     @Override
     public Integer append(Product product, int value) {
-        int val = value;
-        if (products.containsKey(product)) {
-            val += products.get(product);
-        }
-        return products.put(product, value + val);
+
+        return products.put(product, value);
     }
 
     @Override
     public Set<Product> get() {
+
         return products.keySet();
     }
 
@@ -27,6 +25,7 @@ public class ListProductsStorageAdapter implements IProductsStorage<Product>{
 
     @Override
     public void remove(Product product) {
+
         products.remove(product);
     }
 }

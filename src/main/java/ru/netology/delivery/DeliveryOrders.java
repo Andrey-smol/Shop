@@ -8,6 +8,7 @@ import java.util.function.Consumer;
 
 public class DeliveryOrders implements IObserver {
     Consumer<Order> consumer;
+
     public DeliveryOrders(ISubject subject, Consumer<Order> consumer) {
         this.consumer = consumer;
         subject.registerObserver(this);

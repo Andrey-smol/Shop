@@ -12,10 +12,12 @@ public class Delivery {
     }
 
     public String getDeliveryMan() {
+
         return deliveryMan;
     }
 
     public Date getDate() {
+
         return date;
     }
 }

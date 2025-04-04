@@ -3,20 +3,26 @@ package ru.netology.storage;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Categories{
+public class Categories {
     private final ICategoriesStorage categoriesStorage;
 
     public Categories(ICategoriesStorage categoriesStorage) {
+
         this.categoriesStorage = categoriesStorage;
     }
 
-    public ICategoriesStorage add(String category){
+    public ICategoriesStorage add(String category) {
+
         return categoriesStorage.add(category);
     }
-    public boolean remove(String category){
-      return categoriesStorage.remove(category);
+
+    public boolean remove(String category) {
+
+        return categoriesStorage.remove(category);
     }
-    public Set<String> get(){
+
+    public Set<String> get() {
+
         return categoriesStorage.get();
     }
 }
