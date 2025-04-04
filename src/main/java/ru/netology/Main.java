@@ -2,6 +2,7 @@ package ru.netology;
 
 import ru.netology.address.Address;
 import ru.netology.address.AddressBuilder;
+import ru.netology.address.CheckCityDelivery;
 import ru.netology.customers.Customer;
 import ru.netology.delivery.DeliveryOrders;
 import ru.netology.delivery.DeliveryOrdersStorage;
@@ -95,35 +96,45 @@ public class Main {
     }
 
     private static void setCustomerDetails(Order order) {
-        System.out.println("Для окончания регистрации введите свои данные");
-        System.out.print("Введите ваше имя: ");
-        String name = in.nextLine();
-        System.out.print("Введите вашу фамилию: ");
-        String surname = in.nextLine();
-        System.out.println("Адрес доставки");
-        System.out.print("Город: ");
-        String city = in.nextLine();
-        System.out.print("Улица: ");
-        String street = in.nextLine();
-        System.out.print("Дом: ");
-        String house = in.nextLine();
-        System.out.print("Квартира: ");
-        String apartment = in.nextLine();
-        System.out.print("Телефон для связи, в формате (xxx ххх-хх-хх): ");
-        //to do check phone
-        String phone = in.nextLine();
-        System.out.print("Дата доставки в формате час - день - месяц (хх-хх-хх): ");
-        String date = in.nextLine();
-        //to do check date
-        Address address = new AddressBuilder()
-                .setCity(city)
-                .setStreet(street)
-                .setHouse(house)
-                .setApartment(apartment)
-                .setPhone("+7" + phone)
-                .build();
-        order.setCustomer(new Customer(name, surname, address));
-        order.setDateDelivery(date);
+        while (true) {
+            System.out.println("Для окончания регистрации введите свои данные");
+            System.out.print("Введите ваше имя: ");
+            String name = in.nextLine();
+            System.out.print("Введите вашу фамилию: ");
+            String surname = in.nextLine();
+
+            System.out.println("Список городов доставки товаров");
+            CheckCityDelivery.getInstance().getiCheckCityDeliveryStorage().getCities().forEach(System.out::println);
+            System.out.println("Адрес доставки");
+            System.out.print("Город: ");
+            String city = in.nextLine();
+            if (!CheckCityDelivery.getInstance().getiCheckCityDeliveryStorage().checkList(city)) {
+                System.out.println("Вы ввели город в который нет поставки");
+                continue;
+            }
+            System.out.print("Улица: ");
+            String street = in.nextLine();
+            System.out.print("Дом: ");
+            String house = in.nextLine();
+            System.out.print("Квартира: ");
+            String apartment = in.nextLine();
+            System.out.print("Телефон для связи, в формате (xxx ххх-хх-хх): ");
+            //to do check phone
+            String phone = in.nextLine();
+            System.out.print("Дата доставки в формате час - день - месяц (хх-хх-хх): ");
+            String date = in.nextLine();
+            //to do check date
+            Address address = new AddressBuilder()
+                    .setCity(city)
+                    .setStreet(street)
+                    .setHouse(house)
+                    .setApartment(apartment)
+                    .setPhone("+7" + phone)
+                    .build();
+            order.setCustomer(new Customer(name, surname, address));
+            order.setDateDelivery(date);
+            break;
+        }
     }
 
     private static STATUS selectProductDialog(Order order, String category) {
