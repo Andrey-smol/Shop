@@ -104,7 +104,9 @@ public class Main {
             String surname = in.nextLine();
 
             System.out.println("Список городов доставки товаров");
+            System.out.println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
             CheckCityDelivery.getInstance().getiCheckCityDeliveryStorage().getCities().forEach(System.out::println);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
             System.out.println("Адрес доставки");
             System.out.print("Город: ");
             String city = in.nextLine();
@@ -206,9 +208,9 @@ public class Main {
         } else {
             System.out.println("***************Категория " + category + "***************");
             ProductsByCategory products = op.get();
-            for (Product p : products.getProducts()) {
+            for (Product p : products.getProductsStorage().get()) {
                 System.out.println(number++ + " - " + p.getName() + ", цена: " + p.getPrice() + " руб, производитель: " + p.getManufacturer());
-                OptionalInt i = products.getValue(p);
+                OptionalInt i = products.getProductsStorage().getValue(p);
                 System.out.println("Количество на складе: " + (i.isPresent() ? i.getAsInt() : "товара нет"));
                 System.out.println("Рейтинг: " + p.getRating());
                 System.out.println("***************************************************************************");
@@ -232,7 +234,7 @@ public class Main {
     }
 
     private static Set<String> getCategories() {
-        return CustomerProductsStorage.getInstance().getCategories().get();
+        return CustomerProductsStorage.getInstance().getCategories().getCategoriesStorage().get();
     }
 
     public static boolean isNumeric(String str) {

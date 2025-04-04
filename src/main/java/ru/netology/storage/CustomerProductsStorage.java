@@ -38,7 +38,7 @@ public class CustomerProductsStorage implements IGetProducts {
     }
 
     public Optional<ProductsByCategory> getObjectProductsByCategory(String category) {
-        if (categories.get().contains(category)) {
+        if (categories.getCategoriesStorage().get().contains(category)) {
             return Optional.of((ProductsByCategory) getProductsByCategories()
                     .stream()
                     .filter(p -> p.getCategory().equals(category))
@@ -50,7 +50,7 @@ public class CustomerProductsStorage implements IGetProducts {
     public OptionalInt numberProductByStore(String category, Product product) {
         Optional<ProductsByCategory> op = getObjectProductsByCategory(category);
         if (op.isPresent()) {
-            return op.get().getValue(product);
+            return op.get().getProductsStorage().getValue(product);
         }
         return OptionalInt.empty();
     }

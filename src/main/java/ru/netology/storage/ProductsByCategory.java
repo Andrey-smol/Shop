@@ -12,24 +12,8 @@ public class ProductsByCategory {
         this.productsStorage = productsStorage;
     }
 
-    public Integer changeProduct(Product product, int amount) {
-
-        return productsStorage.append(product, amount);
-    }
-
-    public void removeProduct(Product product) {
-
-        productsStorage.remove(product);
-    }
-
-    public Set<Product> getProducts() {
-        return
-                productsStorage.get();
-    }
-
-    public OptionalInt getValue(Product product) {
-
-        return productsStorage.getValue(product);
+    public IProductsStorage<Product> getProductsStorage() {
+        return productsStorage;
     }
 
     public String getCategory() {

@@ -11,18 +11,7 @@ public class Categories {
         this.categoriesStorage = categoriesStorage;
     }
 
-    public ICategoriesStorage add(String category) {
-
-        return categoriesStorage.add(category);
-    }
-
-    public boolean remove(String category) {
-
-        return categoriesStorage.remove(category);
-    }
-
-    public Set<String> get() {
-
-        return categoriesStorage.get();
+    public ICategoriesStorage getCategoriesStorage() {
+        return categoriesStorage;
     }
 }
