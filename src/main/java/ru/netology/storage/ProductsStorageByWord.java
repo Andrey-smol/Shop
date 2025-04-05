@@ -3,40 +3,19 @@ package ru.netology.storage;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
-public class ProductsStorageByWord implements IProductsStorage<Product> {
-    private final IProductsStorage<Product> productsStorage;
+public class ProductsStorageByWord implements Predicate<Product> {
 
-    public ProductsStorageByWord(IProductsStorage<Product> productsStorage) {
+    private final String reg;
 
-        this.productsStorage = productsStorage;
-    }
-    @Override
-    public Integer append(Product product, int value) {
-        return productsStorage.append(product, value);
+    public ProductsStorageByWord(String reg) {
+        this.reg = reg;
     }
 
     @Override
-    public Set<Product> get() {
-        return productsStorage.get();
-    }
-
-    @Override
-    public OptionalInt getValue(Product product) {
-        return productsStorage.getValue(product);
-    }
-
-    @Override
-    public void remove(Product product) {
-        productsStorage.remove(product);
-    }
-
-    public Set<Product> get(Optional<String> op, String s) {
-        if (op.isPresent()) {
-            return productsStorage.get();
-        }
-        String matches = ".*" + op.get() + ".*";
-        return get().stream().filter(p -> p.getName().matches(matches)).collect(Collectors.toSet());
+    public boolean test(Product product) {
+        return product.getName().matches(reg);
     }
 }

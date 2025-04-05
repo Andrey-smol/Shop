@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.OptionalInt;
 import java.util.Set;
 
-public interface IProductsStorage<Product> {
+public interface IProductsStorage<Product>{
     Integer append(Product product, int value);
 
     Set<Product> get();

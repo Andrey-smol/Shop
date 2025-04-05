@@ -1,6 +1,7 @@
 package ru.netology.storage;
 
 import java.util.*;
+import java.util.Set;
 
 public class ListProductsStorageAdapter implements IProductsStorage<Product> {
     private final Map<Product, Integer> products = new HashMap<>();
@@ -13,7 +14,6 @@ public class ListProductsStorageAdapter implements IProductsStorage<Product> {
 
     @Override
     public Set<Product> get() {
-
         return products.keySet();
     }
 

@@ -23,8 +23,10 @@ public class Main {
     private static final String SELECT_SHOPPING_CART = "Корзина";
     private static final String RETURN_SELECT_PRODUCTS = "Дальше";
 
+    private static ICustomerProductsAdapter customerProducts;
     public static void main(String[] args) {
         AdministratorProductsStorage.mainStorage();
+        customerProducts = new CustomerProductsAdapter(CustomerProductsStorage.getInstance());
 
         in = new Scanner(System.in);
         Order order = new Order();
@@ -170,7 +172,7 @@ public class Main {
                 System.out.println("Вы выбрали: " + product.getName());
 
                 //количество данного продукта на складе
-                OptionalInt count_ = CustomerProductsStorage.getInstance().numberProductByStore(category, product);
+                OptionalInt count_ = customerProducts.numberProductByStore(category, product);
                 if (!count_.isPresent()) {
                     System.out.println("Данного продукта нет на складе");
                     continue;
@@ -192,7 +194,7 @@ public class Main {
     private static List<Product> showProductsByCategory(String category) {
         List<Product> list = new ArrayList<>();
         int number = 0;
-        Optional<ProductsByCategory> op = CustomerProductsStorage.getInstance().getObjectProductsByCategory(category);
+        Optional<ProductsByCategory> op = customerProducts.get(category);
         if (!op.isPresent()) {
             System.out.println("Для данной категории нет продуктов на складе");
         } else {
@@ -224,7 +226,7 @@ public class Main {
     }
 
     private static Set<String> getCategories() {
-        return CustomerProductsStorage.getInstance().getCategories().getCategoriesStorage().get();
+        return customerProducts.getCategories().getCategoriesStorage().get();
     }
 
 

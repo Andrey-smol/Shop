@@ -46,12 +46,4 @@ public class CustomerProductsStorage {
         }
         return Optional.empty();
     }
-
-    public OptionalInt numberProductByStore(String category, Product product) {
-        Optional<ProductsByCategory> op = getObjectProductsByCategory(category);
-        if (op.isPresent()) {
-            return op.get().getProductsStorage().getValue(product);
-        }
-        return OptionalInt.empty();
-    }
 }
