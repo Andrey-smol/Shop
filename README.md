@@ -28,8 +28,8 @@
 ## SOLID
 
 - S: принцип единсвенной ответственности (Класс должен выполнять только те функции, для которых он логически предназначен)
-  [s - ](https://github.com/Andrey-smol/Shop/blob/24f9e8a0f655d465bbe472cc52ba99fd098c01bb/src/main/java/ru/netology/address/Address.java#L3)
-  имеется класс Address который хранит информацию о адресе покупателя
+  [s - ](https://github.com/Andrey-smol/Shop/blob/24f9e8a0f655d465bbe472cc52ba99fd098c01bb/src/main/java/ru/netology/storage/Product.java#L5)
+  имеется класс Product который хранит информацию о продукте
 - O: принцип открытости/закрытости (Програмные сущности должны быть открыты для расширения, но закрыты для модификации)
   [o - ](https://github.com/Andrey-smol/Shop/blob/24f9e8a0f655d465bbe472cc52ba99fd098c01bb/src/main/java/ru/netology/storage/Categories.java#L6)
   есть класс Categories товаров, ему передаётся ссылка на объект реализующий интерфейс ICategoriesStorage где хранятся эти категории 
