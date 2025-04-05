@@ -5,8 +5,18 @@ import java.util.List;
 import java.util.function.Consumer;
 
 public class Emmiter implements ISubject {
+    private static Emmiter instance;
     private Order order;
     private final List<IObserver> observers = new ArrayList<>();
+
+    private Emmiter(){}
+
+    public static Emmiter getInstance() {
+        if(instance == null){
+            instance = new Emmiter();
+        }
+        return instance;
+    }
 
     @Override
     public void registerObserver(IObserver observer) {

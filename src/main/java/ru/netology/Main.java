@@ -25,9 +25,6 @@ public class Main {
 
     public static void main(String[] args) {
         AdministratorProductsStorage.mainStorage();
-        Emmiter emmiter = new Emmiter();
-        new DeliveryOrders(emmiter, DeliveryOrdersStorage.getInstance());
-        new StorageOrders(emmiter, StoreOrdersStorage.getInstance());
 
         in = new Scanner(System.in);
         Order order = new Order();
@@ -71,7 +68,7 @@ public class Main {
             }
 
             setCustomerDetails(order);
-            emmiter.sendData(order);
+            Emmiter.getInstance().sendData(order);
             break;
         }
         System.out.println(GOODBYE);

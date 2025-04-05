@@ -4,7 +4,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.Set;
 
-public class CustomerProductsStorage implements IGetProducts {
+public class CustomerProductsStorage {
 
     private static CustomerProductsStorage instance;
     private Categories categories;
@@ -53,11 +53,5 @@ public class CustomerProductsStorage implements IGetProducts {
             return op.get().getProductsStorage().getValue(product);
         }
         return OptionalInt.empty();
-    }
-
-    @Override
-    public Object get(Object o, Object o2) {
-
-        return null;
     }
 }

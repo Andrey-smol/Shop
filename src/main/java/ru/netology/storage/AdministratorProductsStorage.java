@@ -2,6 +2,9 @@ package ru.netology.storage;
 
 import ru.netology.address.CheckCityDelivery;
 import ru.netology.address.ListCityDelivery;
+import ru.netology.delivery.DeliveryOrders;
+import ru.netology.delivery.DeliveryOrdersStorage;
+import ru.netology.orders.Emmiter;
 import ru.netology.orders.Order;
 
 import java.util.HashSet;
@@ -13,6 +16,9 @@ public class AdministratorProductsStorage {
     private Categories categories;
 
     public static void mainStorage() {
+
+        new DeliveryOrders(Emmiter.getInstance(), DeliveryOrdersStorage.getInstance());
+        new StorageOrders(Emmiter.getInstance(), StoreOrdersStorage.getInstance());
 
         AdministratorProductsStorage admin = new AdministratorProductsStorage();
         CheckCityDelivery.getInstance().setICheckCityDeliveryStorage(ListCityDelivery.getInstance());
