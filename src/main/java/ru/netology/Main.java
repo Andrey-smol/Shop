@@ -32,7 +32,7 @@ public class Main {
             showMainMenu();
             //ввод категории
             String category = in.nextLine();
-            if (exitCheck(category)) {
+            if (SELECT_RETURN.equalsIgnoreCase(category)) {
                 break;
             }
             if (getCategories().contains(category)) {
@@ -144,7 +144,7 @@ public class Main {
             System.out.println("Для выхода из выбора продуктов в этой категории введите " + RETURN_SELECT_PRODUCTS);
             System.out.print("Для выбора товара введите номер товара: ");
             String num = in.nextLine();
-            if (exitCheck(num)) {
+            if (SELECT_RETURN.equalsIgnoreCase(num)) {
                 return STATUS.STATUS_RETURN;
             }
             if (SELECT_CATEGORY.equalsIgnoreCase(num)) {
@@ -155,7 +155,7 @@ public class Main {
             }
             System.out.print("Введите количество: ");
             String count = in.nextLine();
-            if (exitCheck(count)) {
+            if (SELECT_RETURN.equalsIgnoreCase(count)) {
                 return STATUS.STATUS_RETURN;
             }
             if (!isNumeric(num) || !isNumeric(count)) {
@@ -187,13 +187,6 @@ public class Main {
                 System.out.println("Вы ввели не корректное число, повторите ввод");
             }
         }
-    }
-
-    private static boolean exitCheck(String str) {
-        if (SELECT_RETURN.equalsIgnoreCase(str)) {
-            return true;
-        }
-        return false;
     }
 
     private static List<Product> showProductsByCategory(String category) {
@@ -233,6 +226,7 @@ public class Main {
     private static Set<String> getCategories() {
         return CustomerProductsStorage.getInstance().getCategories().getCategoriesStorage().get();
     }
+
 
     public static boolean isNumeric(String str) {
         return str.matches("-?\\d+(\\.\\d+)?");
